@@ -38,7 +38,7 @@ public class PhotoServiceImpl implements PhotoService {
     public PagedResponse<PhotoResponse> getAllPhotos(int page, int size) {
         AppUtils.validatePageNumberAndSize(page, size);
 
-        Pageable pageable = PageRequest.of(page, size, Sort.Direction.DESC, CREATED_AT);
+        Pageable pageable = PageRequest.of(page, size, Sort.Direction.DESC, ID);
         Page<Photo> photos = photoRepository.findAll(pageable);
 
         List<PhotoResponse> photoResponses = new ArrayList<>(photos.getContent().size());
@@ -83,11 +83,11 @@ public class PhotoServiceImpl implements PhotoService {
         Album album = albumRepository.findById(photoRequest.getAlbumId())
                 .orElseThrow(() -> new ResourceNotFoundException(ALBUM, ID, photoRequest.getAlbumId()));
 
-            Photo photo = new Photo(photoRequest.getTitle(), photoRequest.getUrl(), photoRequest.getThumbnailUrl(),
-                    album);
-            Photo newPhoto = photoRepository.save(photo);
-            return new PhotoResponse(newPhoto.getId(), newPhoto.getTitle(), newPhoto.getUrl(),
-                    newPhoto.getThumbnailUrl(), newPhoto.getAlbum().getId());
+        Photo photo = new Photo(photoRequest.getTitle(), photoRequest.getUrl(), photoRequest.getThumbnailUrl(),
+                album);
+        Photo newPhoto = photoRepository.save(photo);
+        return new PhotoResponse(newPhoto.getId(), newPhoto.getTitle(), newPhoto.getUrl(),
+                newPhoto.getThumbnailUrl(), newPhoto.getAlbum().getId());
 
     }
 

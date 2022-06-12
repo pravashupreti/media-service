@@ -2,17 +2,20 @@ package com.ea.mediaservice.model;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
+
 @Entity
 @Data
 @NoArgsConstructor
 @Table(name = "photos", uniqueConstraints = {@UniqueConstraint(columnNames = {"title"})})
-public class Photo {
+public class Photo  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
