@@ -5,13 +5,14 @@ import com.ea.mediaservice.payload.AlbumResponse;
 import com.ea.mediaservice.payload.ApiResponse;
 import com.ea.mediaservice.payload.PagedResponse;
 import com.ea.mediaservice.payload.AlbumRequest;
+import com.ea.mediaservice.security.UserPrincipal;
 import org.springframework.http.ResponseEntity;
 
 public interface AlbumService {
 
 	PagedResponse<AlbumResponse> getAllAlbums(int page, int size);
 
-	ResponseEntity<Album> addAlbum(AlbumRequest albumRequest);
+	ResponseEntity<Album> addAlbum(AlbumRequest albumRequest, UserPrincipal currentuser);
 
 	ResponseEntity<Album> getAlbum(Long id);
 

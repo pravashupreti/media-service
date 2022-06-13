@@ -7,6 +7,8 @@ import com.ea.mediaservice.payload.ApiResponse;
 import com.ea.mediaservice.payload.PagedResponse;
 import com.ea.mediaservice.payload.PhotoResponse;
 import com.ea.mediaservice.payload.AlbumRequest;
+import com.ea.mediaservice.security.CurrentUser;
+import com.ea.mediaservice.security.UserPrincipal;
 import com.ea.mediaservice.service.AlbumService;
 import com.ea.mediaservice.service.PhotoService;
 import com.ea.mediaservice.utils.AppConstants;
@@ -42,8 +44,8 @@ public class AlbumController {
 	}
 
 	@PostMapping
-	public ResponseEntity<Album> addAlbum(@Valid @RequestBody AlbumRequest albumRequest) {
-		return albumService.addAlbum(albumRequest);
+	public ResponseEntity<Album> addAlbum(@Valid @RequestBody AlbumRequest albumRequest, @CurrentUser UserPrincipal currentuser) {
+		return albumService.addAlbum(albumRequest,currentuser);
 	}
 
 	@GetMapping("/{id}")

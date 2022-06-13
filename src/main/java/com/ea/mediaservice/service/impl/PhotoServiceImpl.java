@@ -103,7 +103,7 @@ public class PhotoServiceImpl implements PhotoService {
     public PagedResponse<PhotoResponse> getAllPhotosByAlbum(Long albumId, int page, int size) {
         AppUtils.validatePageNumberAndSize(page, size);
 
-        Pageable pageable = PageRequest.of(page, size, Sort.Direction.DESC, AppConstants.CREATED_AT);
+        Pageable pageable = PageRequest.of(page, size, Sort.Direction.DESC, AppConstants.ID);
 
         Page<Photo> photos = photoRepository.findByAlbumId(albumId, pageable);
 

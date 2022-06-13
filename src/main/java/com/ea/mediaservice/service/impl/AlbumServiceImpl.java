@@ -9,6 +9,7 @@ import com.ea.mediaservice.payload.ApiResponse;
 import com.ea.mediaservice.payload.PagedResponse;
 import com.ea.mediaservice.payload.AlbumRequest;
 import com.ea.mediaservice.repository.AlbumRepository;
+import com.ea.mediaservice.security.UserPrincipal;
 import com.ea.mediaservice.service.AlbumService;
 import com.ea.mediaservice.utils.AppUtils;
 import org.modelmapper.ModelMapper;
@@ -62,10 +63,10 @@ public class AlbumServiceImpl implements AlbumService {
     }
 
     @Override
-    public ResponseEntity<Album> addAlbum(AlbumRequest albumRequest) {
+    public ResponseEntity<Album> addAlbum(AlbumRequest albumRequest , UserPrincipal currentuser) {
 
         Album album = new Album();
-
+        album.setUserId(currentuser.getId());
         modelMapper.map(albumRequest, album);
 
         Album newAlbum = albumRepository.save(album);
