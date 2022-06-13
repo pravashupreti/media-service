@@ -44,8 +44,8 @@ public class AlbumController {
 	}
 
 	@PostMapping
-	public ResponseEntity<Album> addAlbum(@Valid @RequestBody AlbumRequest albumRequest, @CurrentUser UserPrincipal currentuser) {
-		return albumService.addAlbum(albumRequest,currentuser);
+	public ResponseEntity<Album> addAlbum(@Valid @RequestBody AlbumRequest albumRequest, @CurrentUser UserPrincipal currentUser) {
+		return albumService.addAlbum(albumRequest,currentUser);
 	}
 
 	@GetMapping("/{id}")
