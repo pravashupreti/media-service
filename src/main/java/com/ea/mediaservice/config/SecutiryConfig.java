@@ -1,7 +1,7 @@
 package com.ea.mediaservice.config;
 
-import com.ea.contentservice.security.JwtAuthenticationEntryPoint;
-import com.ea.contentservice.security.JwtAuthenticationFilter;
+import com.ea.mediaservice.security.JwtAuthenticationEntryPoint;
+import com.ea.mediaservice.security.JwtAuthenticationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
